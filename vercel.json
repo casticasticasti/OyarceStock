@@ -1,18 +1,16 @@
 {
   "version": 2,
+  "framework": "vite",
   "builds": [
     {
       "src": "package.json",
       "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist",
-        "zeroConfig": true
-      }
+      "config": { "distDir": "dist", "zeroConfig": true }
     }
   ],
   "rewrites": [
-    { "source": "/assets/(.*)", "destination": "/assets/$1" },
-    { "source": "/(.*\\.(js|css|png|jpg|jpeg|gif|ico|svg))", "destination": "/$1" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/assets/:path*", "destination": "/assets/:path*" },
+    { "source": "/:static*.:ext(js|css|png|jpg|jpeg|gif|ico|svg)", "destination": "/:static*.:ext" },
+    { "source": "/:any*", "destination": "/index.html" }
   ]
 }
