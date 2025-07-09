@@ -1,0 +1,6 @@
+# Ignorar caches y artefactos de Python
+__pycache__/
+*.py[cod]
+
+# Ignorar archivos de sistema macOS
+.DS_Store
