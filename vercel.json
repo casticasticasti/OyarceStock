@@ -1,89 +1,33 @@
 {
-  "routes": [
-    {
-      "src": "/trabajador-servicio.js",
-      "headers": {
-        "Content-Type": "application/javascript",
-        "Service-Worker-Allowed": "/"
-      }
-    },
-    {
-      "src": "/manifiesto.json",
-      "headers": {
-        "Content-Type": "application/manifest+json"
-      }
-    },
-    {
-      "src": "/data/(.*)",
-      "headers": {
-        "Content-Type": "text/csv",
-        "Cache-Control": "public, max-age=3600"
-      }
-    },
-    {
-      "src": "/datos/(.*)",
-      "headers": {
-        "Content-Type": "application/json",
-        "Cache-Control": "public, max-age=3600"
-      }
-    },
-    {
-      "src": "/estilos/(.*)",
-      "headers": {
-        "Content-Type": "text/css",
-        "Cache-Control": "public, max-age=86400"
-      }
-    },
-    {
-      "src": "/scripts/(.*)",
-      "headers": {
-        "Content-Type": "application/javascript",
-        "Cache-Control": "public, max-age=86400"
-      }
-    },
-    {
-      "src": "/iconos/(.*)",
-      "headers": {
-        "Content-Type": "image/png",
-        "Cache-Control": "public, max-age=604800"
-      }
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        }
-      ]
-    },
-    {
-      "source": "/index.html",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        }
-      ]
-    }
-  ],
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/estilos/:path*",
+      "destination": "/estilos/:path*"
+    },
+    {
+      "source": "/scripts/:path*",
+      "destination": "/scripts/:path*"
+    },
+    {
+      "source": "/iconos/:path*",
+      "destination": "/iconos/:path*"
+    },
+    {
+      "source": "/data/:path*",
+      "destination": "/data/:path*"
+    },
+    {
+      "source": "/datos/:path*",
+      "destination": "/datos/:path*"
+    },
+    {
+      "source": "/:static*.:ext(js|css|png|jpg|jpeg|gif|ico|svg|json)",
+      "destination": "/:static*.:ext"
+    },
+    {
+      "source": "/:any*",
       "destination": "/index.html"
     }
   ]
