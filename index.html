@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OyarceStock</title>
+    <meta name="description" content="Sistema de gestión de inventario para repuestos automotrices">
+    <meta name="theme-color" content="#0066CC">
+    <link rel="icon" href="iconos/icono-192.png" type="image/png">
+    <link rel="manifest" href="manifiesto.json">
+    <link rel="stylesheet" href="estilos/diseño.css">
+    <link rel="stylesheet" href="estilos/login.css">
+</head>
+<body>
+    <!-- Pantalla de Login -->
+    <div id="login">
+        <div class="login-container">
+            <h1>Bienvenido a OyarceStock</h1>
+            <div class="login-form">
+                <input type="text" id="usuario" placeholder="Usuario" required>
+                <input type="password" id="clave" placeholder="Clave" required>
+                <button id="btnLogin">Entrar</button>
+                <div id="error-message" class="error-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido principal (oculto hasta login) -->
+    <div id="app" style="display: none;">
+        <!-- Barra superior -->
+        <header class="app-header">
+            <h1>OyarceStock</h1>
+            <button id="btnCerrarSesion" class="btn-secondary">Cerrar Sesión</button>
+        </header>
+
+        <!-- Navegación por pestañas -->
+        <nav class="tab-nav">
+            <button class="tab-btn active" data-tab="inventario">Inventario</button>
+            <button class="tab-btn" data-tab="escaner">Escáner</button>
+            <button class="tab-btn" data-tab="agregar">Agregar</button>
+        </nav>
+
+        <!-- Pestaña Inventario -->
+        <div id="inventario" class="tab-content active">
+            <div class="search-section">
+                <input type="text" id="buscarInventario" placeholder="Buscar en inventario...">
+                <div class="filter-controls">
+                    <select id="filtroMarca">
+                        <option value="">Todas las marcas</option>
+                    </select>
+                    <select id="filtroSistema">
+                        <option value="">Todos los sistemas</option>
+                    </select>
+                </div>
+            </div>
+            <div id="listaInventario" class="inventory-list">
+                <!-- Los productos se cargarán dinámicamente aquí -->
+            </div>
+        </div>
+
+        <!-- Pestaña Escáner -->
+        <div id="escaner" class="tab-content">
+            <div class="scanner-section">
+                <h2>Escáner de Códigos</h2>
+                <div id="cameraContainer" class="camera-container">
+                    <video id="cameraPreview" autoplay></video>
+                    <div class="scanner-overlay">
+                        <div class="scanner-line"></div>
+                    </div>
+                </div>
+                <button id="btnIniciarEscaner" class="btn-primary">Iniciar Escáner</button>
+                <button id="btnDetenerEscaner" class="btn-secondary" style="display: none;">Detener Escáner</button>
+                <div id="codigoEscaneado" class="scanned-code"></div>
+            </div>
+        </div>
+
+        <!-- Pestaña Agregar -->
+        <div id="agregar" class="tab-content">
+            <form id="formAgregarProducto" class="product-form">
+                <h2>Agregar Producto</h2>
+                
+                <div class="form-group">
+                    <label for="producto">Producto *</label>
+                    <input type="text" id="producto" name="producto" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion" name="descripcion" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="marca">Marca *</label>
+                    <select id="marca" name="marca" required>
+                        <option value="">Seleccionar marca</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="modelo">Modelo *</label>
+                    <select id="modelo" name="modelo" required>
+                        <option value="">Seleccionar modelo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="año">Año</label>
+                    <select id="año" name="año">
+                        <option value="">Seleccionar año</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="sistema">Sistema</label>
+                    <select id="sistema" name="sistema">
+                        <option value="">Seleccionar sistema</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="componente">Componente</label>
+                    <select id="componente" name="componente">
+                        <option value="">Seleccionar componente</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="estado">Estado</label>
+                    <select id="estado" name="estado">
+                        <option value="">Seleccionar estado</option>
+                        <option value="nuevo">Nuevo</option>
+                        <option value="usado">Usado</option>
+                        <option value="reacondicionado">Reacondicionado</option>
+                        <option value="dañado">Dañado</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="precio">Precio</label>
+                    <input type="number" id="precio" name="precio" step="0.01" min="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="cantidad">Cantidad</label>
+                    <input type="number" id="cantidad" name="cantidad" min="1" value="1">
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Agregar Producto</button>
+                    <button type="reset" class="btn-secondary">Limpiar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Botón flotante para acciones rápidas -->
+    <button id="btnAccionRapida" class="fab" style="display: none;">
+        <span>+</span>
+    </button>
+
+    <!-- Scripts -->
+    <script src="scripts/login.js"></script>
+    <script src="scripts/logica-inventario.js"></script>
+    <script src="scripts/escaner-codigos.js"></script>
+    
+    <!-- Registrar Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('trabajador-servicio.js')
+                .then(registration => console.log('SW registrado:', registration))
+                .catch(error => console.log('Error SW:', error));
+        }
+    </script>
+</body>
+</html>

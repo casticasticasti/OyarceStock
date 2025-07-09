@@ -1,0 +1,517 @@
+/* diseño.css - Estilos principales siguiendo Apple HIG */
+
+/* Variables CSS */
+:root {
+    --color-primary: #0066CC;
+    --color-primary-dark: #0052A3;
+    --color-secondary: #8E8E93;
+    --color-success: #34C759;
+    --color-warning: #FF9500;
+    --color-danger: #FF3B30;
+    --color-background: #F2F2F7;
+    --color-surface: #FFFFFF;
+    --color-text: #000000;
+    --color-text-secondary: #3C3C43;
+    --color-text-tertiary: #8E8E93;
+    --color-separator: #C6C6C8;
+    --color-fill: #E5E5EA;
+    
+    --border-radius: 10px;
+    --border-radius-large: 16px;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --shadow-large: 0 4px 20px rgba(0, 0, 0, 0.15);
+    
+    --font-size-title: 28px;
+    --font-size-large: 20px;
+    --font-size-body: 16px;
+    --font-size-small: 14px;
+    --font-size-caption: 12px;
+    
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+}
+
+/* Reset y base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: var(--font-size-body);
+    line-height: 1.4;
+    color: var(--color-text);
+    background-color: var(--color-background);
+    overflow-x: hidden;
+}
+
+/* Contenedor principal */
+#app {
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow);
+}
+
+/* Header */
+.app-header {
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-separator);
+    padding: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.app-header h1 {
+    font-size: var(--font-size-title);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+/* Navegación por pestañas */
+.tab-nav {
+    display: flex;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-separator);
+    position: sticky;
+    top: 73px;
+    z-index: 99;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: var(--spacing-md);
+    background: none;
+    border: none;
+    font-size: var(--font-size-body);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.tab-btn:hover {
+    background-color: var(--color-fill);
+}
+
+.tab-btn.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+}
+
+/* Contenido de pestañas */
+.tab-content {
+    display: none;
+    padding: var(--spacing-lg);
+    min-height: calc(100vh - 140px);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Botones */
+.btn-primary, .btn-secondary, .btn-edit, .btn-delete {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-body);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.btn-secondary {
+    background-color: var(--color-fill);
+    color: var(--color-text);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-separator);
+}
+
+.btn-edit {
+    background-color: var(--color-warning);
+    color: white;
+    margin-right: var(--spacing-sm);
+}
+
+.btn-edit:hover {
+    background-color: #E6850E;
+}
+
+.btn-delete {
+    background-color: var(--color-danger);
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #D70015;
+}
+
+/* Formularios */
+.product-form {
+    background-color: var(--color-surface);
+    border-radius: var(--border-radius-large);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow);
+}
+
+.product-form h2 {
+    font-size: var(--font-size-large);
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+    display: block;
+    font-size: var(--font-size-small);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-separator);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-body);
+    color: var(--color-text);
+    background-color: var(--color-surface);
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.form-actions button {
+    flex: 1;
+}
+
+/* Sección de búsqueda */
+.search-section {
+    background-color: var(--color-surface);
+    border-radius: var(--border-radius-large);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow);
+}
+
+.search-section input {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-separator);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-body);
+    margin-bottom: var(--spacing-md);
+}
+
+.filter-controls {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.filter-controls select {
+    flex: 1;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-separator);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-body);
+    background-color: var(--color-surface);
+}
+
+/* Lista de inventario */
+.inventory-list {
+    display: grid;
+    gap: var(--spacing-md);
+}
+
+.product-item {
+    background-color: var(--color-surface);
+    border-radius: var(--border-radius-large);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.product-info {
+    flex: 1;
+}
+
+.product-info h3 {
+    font-size: var(--font-size-large);
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+}
+
+.product-info p {
+    font-size: var(--font-size-small);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.product-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    margin-left: var(--spacing-md);
+}
+
+.product-actions button {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-small);
+    white-space: nowrap;
+}
+
+.no-products {
+    text-align: center;
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-large);
+    padding: var(--spacing-xl);
+}
+
+/* Sección del escáner */
+.scanner-section {
+    text-align: center;
+    background-color: var(--color-surface);
+    border-radius: var(--border-radius-large);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow);
+}
+
+.scanner-section h2 {
+    font-size: var(--font-size-large);
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
+}
+
+.camera-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto var(--spacing-lg);
+    border-radius: var(--border-radius-large);
+    overflow: hidden;
+    background-color: var(--color-fill);
+}
+
+.camera-container video {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.scanner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scanner-line {
+    width: 80%;
+    height: 2px;
+    background-color: var(--color-success);
+    box-shadow: 0 0 10px var(--color-success);
+    animation: scan 2s ease-in-out infinite;
+}
+
+@keyframes scan {
+    0%, 100% { transform: translateY(-50px); opacity: 0; }
+    50% { transform: translateY(0); opacity: 1; }
+}
+
+.scanned-code {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background-color: var(--color-fill);
+    border-radius: var(--border-radius);
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.code-result {
+    font-size: var(--font-size-large);
+    font-weight: 600;
+    color: var(--color-text);
+    margin: var(--spacing-sm) 0;
+    padding: var(--spacing-sm);
+    background-color: var(--color-surface);
+    border-radius: var(--border-radius);
+    font-family: monospace;
+}
+
+/* Botón flotante */
+.fab {
+    position: fixed;
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: var(--shadow-large);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.fab:hover {
+    background-color: var(--color-primary-dark);
+    transform: scale(1.1);
+}
+
+/* Mensajes */
+.message {
+    position: fixed;
+    top: var(--spacing-lg);
+    right: var(--spacing-lg);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    color: white;
+    font-weight: 500;
+    z-index: 1001;
+    animation: slideIn 0.3s ease;
+}
+
+.message.success {
+    background-color: var(--color-success);
+}
+
+.message.error {
+    background-color: var(--color-danger);
+}
+
+.error-message {
+    color: var(--color-danger);
+    font-size: var(--font-size-small);
+    text-align: center;
+    padding: var(--spacing-sm);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .app-header {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .app-header h1 {
+        font-size: var(--font-size-large);
+    }
+    
+    .tab-nav {
+        top: 57px;
+    }
+    
+    .tab-content {
+        padding: var(--spacing-md);
+    }
+    
+    .filter-controls {
+        flex-direction: column;
+    }
+    
+    .product-item {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .product-actions {
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-left: 0;
+        margin-top: var(--spacing-md);
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .tab-btn {
+        font-size: var(--font-size-small);
+        padding: var(--spacing-sm);
+    }
+    
+    .product-form {
+        padding: var(--spacing-md);
+    }
+    
+    .fab {
+        bottom: var(--spacing-md);
+        right: var(--spacing-md);
+    }
+}

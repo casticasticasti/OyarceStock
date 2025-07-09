@@ -1,0 +1,163 @@
+/* login.css - Estilos para la pantalla de login */
+
+/* Contenedor principal del login */
+#login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: var(--spacing-lg);
+}
+
+/* Contenedor del formulario */
+.login-container {
+    background-color: var(--color-surface);
+    border-radius: var(--border-radius-large);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-large);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Título del login */
+.login-container h1 {
+    font-size: var(--font-size-title);
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Formulario de login */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+/* Campos de entrada */
+.login-form input {
+    padding: var(--spacing-md);
+    border: 1px solid var(--color-separator);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-body);
+    color: var(--color-text);
+    background-color: var(--color-surface);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.login-form input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.login-form input::placeholder {
+    color: var(--color-text-tertiary);
+}
+
+/* Botón de login */
+.login-form button {
+    padding: var(--spacing-md);
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-body);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: var(--spacing-sm);
+}
+
+.login-form button:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+}
+
+.login-form button:active {
+    transform: translateY(0);
+}
+
+/* Mensaje de error */
+.login-form .error-message {
+    background-color: rgba(255, 59, 48, 0.1);
+    color: var(--color-danger);
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-small);
+    margin-top: var(--spacing-sm);
+    display: none;
+    border: 1px solid rgba(255, 59, 48, 0.2);
+}
+
+.login-form .error-message[style*="block"] {
+    display: block !important;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-container {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Estados de carga */
+.login-form button:disabled {
+    background-color: var(--color-secondary);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.login-form button:disabled:hover {
+    background-color: var(--color-secondary);
+    transform: none;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    #login {
+        padding: var(--spacing-md);
+    }
+    
+    .login-container {
+        padding: var(--spacing-lg);
+    }
+    
+    .login-container h1 {
+        font-size: var(--font-size-large);
+    }
+    
+    .login-form input,
+    .login-form button {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+}
+
+/* Modo oscuro (opcional) */
+@media (prefers-color-scheme: dark) {
+    .login-container {
+        background-color: #1c1c1e;
+        color: #ffffff;
+    }
+    
+    .login-form input {
+        background-color: #2c2c2e;
+        border-color: #3a3a3c;
+        color: #ffffff;
+    }
+    
+    .login-form input::placeholder {
+        color: #8e8e93;
+    }
+}

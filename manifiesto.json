@@ -1,0 +1,53 @@
+{
+  "name": "OyarceStock",
+  "short_name": "OyarceStock",
+  "description": "Sistema de gestión de inventario para repuestos automotrices",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0066CC",
+  "background_color": "#F2F2F7",
+  "lang": "es",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "iconos/icono-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "iconos/icono-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "utilities"],
+  "shortcuts": [
+    {
+      "name": "Agregar Producto",
+      "short_name": "Agregar",
+      "description": "Agregar nuevo producto al inventario",
+      "url": "/#agregar",
+      "icons": [
+        {
+          "src": "iconos/icono-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Escáner",
+      "short_name": "Escáner",
+      "description": "Escanear código de barras",
+      "url": "/#escaner",
+      "icons": [
+        {
+          "src": "iconos/icono-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}

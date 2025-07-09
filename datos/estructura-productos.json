@@ -1,0 +1,11 @@
+{
+  "producto": "obligatorio",
+  "descripcion": "opcional",
+  "marca": "obligatorio",
+  "modelo": "obligatorio",
+  "sistema": "opcional",
+  "componente": "opcional",
+  "estado": "opcional",
+  "precio": "opcional",
+  "cantidad": "opcional"
+}
