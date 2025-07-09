@@ -18,8 +18,8 @@
       "destination": "/assets/:path*"
     },
     {
-      "source": "/:file(*)\\.(js|css|png|jpg|jpeg|gif|ico|svg)",
-      "destination": "/:file.:ext"
+      "source": "/:static*.:ext(js|css|png|jpg|jpeg|gif|ico|svg)",
+      "destination": "/:static*.:ext"
     },
     {
       "source": "/:any*",
