@@ -1,34 +1,4 @@
-{
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "version": 2,
-  "rewrites": [
-    {
-      "source": "/estilos/:path*",
-      "destination": "/estilos/:path*"
-    },
-    {
-      "source": "/scripts/:path*",
-      "destination": "/scripts/:path*"
-    },
-    {
-      "source": "/iconos/:path*",
-      "destination": "/iconos/:path*"
-    },
-    {
-      "source": "/data/:path*",
-      "destination": "/data/:path*"
-    },
-    {
-      "source": "/datos/:path*",
-      "destination": "/datos/:path*"
-    },
-    {
-      "source": "/:static*.:ext(js|css|png|jpg|jpeg|gif|ico|svg|json)",
-      "destination": "/:static*.:ext"
-    },
-    {
-      "source": "/:any*",
-      "destination": "/index.html"
-    }
-  ]
-}
+/*
+  vercel.json
+  - Configuración de despliegue en Vercel: rutas, cabeceras y cache-control
+*/
